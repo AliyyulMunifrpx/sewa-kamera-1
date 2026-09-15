@@ -99,7 +99,7 @@ function FormSewaContent() {
   };
 
   return (
-    <div className="bg-white text-black min-h-dvh py-12 px-4 lg:pl-40 w-full flex flex-col gap-4">
+    <main className="bg-white text-black min-h-dvh py-12 px-4 lg:pl-40 w-full flex flex-col gap-4">
       <div>
         <span className="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">
           Formulir Pemesanan
@@ -282,7 +282,7 @@ function FormSewaContent() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

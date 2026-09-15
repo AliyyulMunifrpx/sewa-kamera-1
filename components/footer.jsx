@@ -7,6 +7,10 @@ export default function Footer() {
     { name: "Beranda", url: "/" },
     { name: "Katalog", url: "/katalog-sewa-kamera-semarang" },
     { name: "Kontak", url: "/kontak-sewa-kamera-semarang" },
+    {
+      name: "S&K",
+      url: "/syarat-dan-ketentuan-sewa-kamera-semarang",
+    },
   ];
 
   return (
@@ -20,6 +24,7 @@ export default function Footer() {
             src="/assets/logo.webp"
             width={50}
             height={50}
+            className="brightness-0 invert"
           />
           <div>
             <h3 className="text-xl font-bold uppercase tracking-tight text-white">

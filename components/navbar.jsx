@@ -22,6 +22,10 @@ export default function Navbar() {
       name: "Kontak",
       url: "/kontak-sewa-kamera-semarang",
     },
+    {
+      name: "S&K",
+      url: "/syarat-dan-ketentuan-sewa-kamera-semarang",
+    },
   ];
 
   return (

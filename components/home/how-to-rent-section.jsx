@@ -2,27 +2,27 @@ export default function HowToRentSection() {
   const steps = [
     {
       number: "01",
-      title: "Pilih Unit & Tanggal",
+      title: "Pilih Unit & Isi Form",
       description:
-        "Tentukan kamera, iPhone, drone, atau aksesori yang dibutuhkan beserta durasi sewanya di katalog kami.",
+        "Pilih gear yang kamu butuhkan di katalog, tentukan tanggal, lalu isi form pemesanan langsung di website.",
     },
     {
       number: "02",
-      title: "Verifikasi Identitas",
+      title: "Verifikasi & Konfirmasi",
       description:
-        "Kirim identitas resmi (KTP/SIM) via WhatsApp untuk proses verifikasi kilat tanpa prosedur yang rumit.",
+        "Data form akan terhubung ke WhatsApp untuk konfirmasi ketersediaan unit serta verifikasi identitas (KTP/SIM).",
     },
     {
       number: "03",
       title: "Ambil Atau Antar",
       description:
-        "Ambil langsung unit di cabang terdekat atau manfaatkan kurir kami untuk pengantaran langsung ke lokasimu.",
+        "Ambil langsung unit di lokasi kami atau manfaatkan kurir untuk pengantaran langsung ke lokasimu.",
     },
     {
       number: "04",
       title: "Gunakan & Kembalikan",
       description:
-        "Gunakan gear untuk project kamu. Setelah selesai, kembalikan unit sesuai batas waktu yang disepakati.",
+        "Bebas gunakan gear untuk project kamu, lalu kembalikan unit tepat waktu sesuai jadwal yang disepakati.",
     },
   ];
 

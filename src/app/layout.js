@@ -21,13 +21,13 @@ export const metadata = {
   },
   description:
     store?.description ||
-    `Pusat sewa kamera, iPhone, drone, dan aksesoris fotografi/videografi terpercaya di ${store?.city || "Semarang"}. Unit terawat, 100% prima, dan harga terjangkau.`,
+    `Pusat sewa kamera, iPhone, drone, dan perlengkapan fotografi/videografi terpercaya di ${store?.city || "Semarang"}. Unit terawat, 100% prima, dan harga terjangkau.`,
   keywords: [
     `sewa kamera ${store?.city || "Semarang"}`,
     `rental kamera ${store?.city || "Semarang"}`,
     `sewa iphone ${store?.city || "Semarang"}`,
     `sewa drone ${store?.city || "Semarang"}`,
-    `rental aksesoris kamera ${store?.city || "Semarang"}`,
+    `rental perlengkapan kamera ${store?.city || "Semarang"}`,
     `sewa lensa ${store?.city || "Semarang"}`,
     store?.name || " Rental Kamera",
   ],
@@ -37,14 +37,14 @@ export const metadata = {
   metadataBase: new URL(store?.websiteUrl || "https://rentalkamera.com"),
   openGraph: {
     title: `Sewa Kamera Termurah ${store?.city || "Semarang"} | ${store?.name || " Rental Kamera"}`,
-    description: `Penyedia sewa kamera, iPhone, drone, dan aksesoris terpercaya di ${store?.city || "Semarang"} dengan unit terawat dan siap pakai.`,
+    description: `Penyedia sewa kamera, iPhone, drone, dan perlengkapan terpercaya di ${store?.city || "Semarang"} dengan unit terawat dan siap pakai.`,
     url: store?.websiteUrl || "https://rentalkamera.com",
     siteName: store?.name || " Rental Kamera",
     locale: "id_ID",
     type: "website",
     images: [
       {
-        url: "/assets/home/kamera.webp",
+        url: "/assets/opengraph.webp",
         width: 1200,
         height: 630,
         alt: `Sewa Kamera ${store?.city || "Semarang"} - ${store?.name || " Rental Kamera"}`,
@@ -54,8 +54,8 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Sewa Kamera Termurah ${store?.city || "Semarang"} | ${store?.name || " Rental Kamera"}`,
-    description: `Pusat sewa kamera, iPhone, drone, dan aksesoris terpercaya di ${store?.city || "Semarang"}.`,
-    images: ["/assets/home/kamera.webp"],
+    description: `Pusat sewa kamera, iPhone, drone, dan perlengkapan terpercaya di ${store?.city || "Semarang"}.`,
+    images: ["/assets/home/opengraph.webp"],
   },
   robots: {
     index: true,
