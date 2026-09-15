@@ -11,7 +11,7 @@ export const metadata = {
   title: `Sewa Kamera Termurah di ${store?.city || "Semarang"} | ${store?.name || "Rental Kamera"}`,
   description:
     store?.description ||
-    `Pusat rental dan sewa kamera, iPhone, drone, serta perlengkapan fotografi & videografi terpercaya di ${store?.city || "Semarang"}. Unit 100% prima, terawat, dan harga paling terjangkau.`,
+    `Pusat rental dan sewa kamera, iPhone, drone, serta perlengkapan fotografi & videografi terpercaya di ${store?.city || "Semarang"}. `,
   keywords: [
     `sewa kamera ${store?.city || "Semarang"}`,
     `rental kamera ${store?.city || "Semarang"}`,

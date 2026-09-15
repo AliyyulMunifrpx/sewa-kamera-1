@@ -5,4 +5,8 @@ export const store = {
   instagram: "abonkamerasemarang",
   whatsapp: "6282222207157",
   websiteUrl: "https://abon-kamera-demo.vercel.app",
+  address: "Jl. Pemuda No. 123, Sekayu, Semarang Tengah",
+  day: "Sabtu - Minggu",
+  hours: "08.00 - 22.00 WIB",
+  email: "info@abonrental.com",
 };

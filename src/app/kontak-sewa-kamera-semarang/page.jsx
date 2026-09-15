@@ -40,16 +40,16 @@ export default function ContactPage() {
     {
       title: "Alamat Toko",
       value: store?.address || "Jl. Pemuda No. 123, Sekayu, Semarang Tengah",
-      detail: store?.city || "Kota Semarang, Jawa Tengah",
+      detail: store?.city || "Kota Semarang",
     },
     {
       title: "Jam Operasional",
-      value: "Senin - Minggu",
-      detail: "08.00 - 22.00 WIB",
+      value: store?.day,
+      detail: store?.hours,
     },
     {
       title: "Customer Support",
-      value: store?.phone || "+62 812-3456-7890",
+      value: store?.whatsapp || "+62 812-3456-7890",
       detail: "Respon Cepat via WhatsApp",
     },
     {

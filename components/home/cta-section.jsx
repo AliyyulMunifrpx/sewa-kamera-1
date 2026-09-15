@@ -17,24 +17,18 @@ export default function CTASection() {
 
         {/* Headline */}
         <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-white max-w-2xl">
-          Siap Abadikan Momen Terbaikmu Hari Ini?
+          Unit yang kamu mau sudah kami siapkan
         </h2>
-
-        {/* Deskripsi */}
-        <p className="text-sm md:text-base text-white max-w-xl leading-relaxed">
-          Konsultasikan kebutuhan gear kamera, iPhone, drone, atau aksesori
-          milikmu. Admin kami siap membantu booking unit dengan cepat.
-        </p>
 
         {/* Tombol Aksi Utama */}
         <div className="mt-2">
           <Link
-            href="https://wa.me/6281234567890"
+            href="/sewa"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-black text-white font-bold uppercase text-sm px-8 py-4 hover:bg-white hover:text-black transition-colors duration-300 border border-primary"
           >
-            Lihat detail Via WhatsApp
+            Sewa Sekarang
           </Link>
         </div>
       </div>

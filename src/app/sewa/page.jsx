@@ -199,8 +199,14 @@ function FormSewaContent() {
                 getSelectedUnitsData().map((unit) => (
                   <div
                     key={unit.id}
-                    className="flex justify-between items-center bg-black/5 p-3 border border-black"
+                    className="flex justify-between items-center p-4 border border-black"
                   >
+                    <Image
+                      alt="foto unit"
+                      src={unit.image}
+                      width={50}
+                      height={50}
+                    ></Image>
                     <div className="flex flex-col">
                       <span className="text-sm font-bold uppercase line-clamp-1">
                         {unit.name}
