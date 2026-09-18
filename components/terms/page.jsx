@@ -1,20 +1,15 @@
-import Link from "next/link.js";
-import { store } from "../../../data/store.js";
-import CTASection from "../../../components/home/cta-section.jsx";
+"use client";
 
-export const metadata = {
-  title: `Syarat & Ketentuan | ${store?.name || "Rental Kamera"} ${store?.city || "Semarang"}`,
-  description: `Syarat dan ketentuan resmi rental kamera, iPhone, drone, dan perlengkapan kamera di ${store?.name || "Rental Kamera"} ${store?.city || "Semarang"}.`,
-  alternates: {
-    canonical: "/syarat-dan-ketentuan-sewa-kamera-semarang",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+import { motion } from "framer-motion";
+
+const reveal = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
 };
 
-export default function TermsPage() {
+export default function TermsContent({ store }) {
   const terms = [
     {
       title: "1. Persyaratan Identitas",
@@ -58,23 +53,25 @@ export default function TermsPage() {
   ];
 
   return (
-    <main className="bg-white text-black min-h-dvh py-8  lg:py-12 w-full flex flex-col gap-4">
+    <>
       {/* Header Section */}
-      <div className="flex flex-col gap-2 px-4 lg:pl-40">
+      <motion.div {...reveal} className="flex flex-col gap-2 px-4 lg:pl-40">
         <span className="text-primary font-bold text-sm uppercase tracking-wider">
           {store?.name || "Rental Kamera"} {store?.city || "Semarang"}
         </span>
         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-black">
           Syarat & Ketentuan
         </h1>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:pl-40 pr-4">
         {/* Kolom Kiri: Daftar Ketentuan */}
         <div className="lg:col-span-3 rounded-lg p-4 flex flex-col gap-4 bg-white">
           {terms.map((section, idx) => (
-            <div
+            <motion.div
               key={idx}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: idx * 0.08 }}
               className="flex flex-col gap-3 border-b border-black/10 pb-6 last:border-none last:pb-0"
             >
               <h2 className="text-lg font-bold uppercase text-black">
@@ -88,11 +85,10 @@ export default function TermsPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-      <CTASection></CTASection>
-    </main>
+    </>
   );
 }

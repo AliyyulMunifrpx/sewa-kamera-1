@@ -3,7 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { products } from "../../data/product";
+
+const reveal = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
 
 export default function CatalogSection() {
   const [activeCategory, setActiveCategory] = useState("Semua");
@@ -18,11 +26,10 @@ export default function CatalogSection() {
     })
     .slice(0, 8);
 
-
   return (
     <section className="bg-white text-black py-12 px-4 lg:pl-40 w-full">
       {/* Header & Tab Filter */}
-      <div className="flex flex-col gap-4 mb-8">
+      <motion.div {...reveal} className="flex flex-col gap-4 mb-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
           <div>
             <span className="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">
@@ -52,15 +59,16 @@ export default function CatalogSection() {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Grid 8 Produk */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {filteredProducts.map((item, index) => {
-
           return (
-            <div
+            <motion.div
               key={item.id || index}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: (index % 4) * 0.08 }}
               className="bg-white border border-black flex flex-col justify-between p-4 relative group hover:border-primary transition-colors duration-300"
             >
               {/* Badge (Dinamis dari category / badge) */}
@@ -94,24 +102,24 @@ export default function CatalogSection() {
                 </p>
 
                 <Link
-                  href={`/sewa-kamera-semarang/${item.slug}`}
+                  href={`/sewa-kamera-surabaya/${item.slug}`}
                   className="mt-4 w-full bg-primary text-white text-center py-2 font-medium hover:bg-black transition-colors duration-300"
                 >
                   Lihat detail
                 </Link>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
-      <div className="flex justify-center mt-8">
+      <motion.div {...reveal} className="flex justify-center mt-8">
         <Link
-          href="/katalog-sewa-kamera-semarang"
+          href="/katalog-sewa-kamera-surabaya"
           className="bg-black text-white px-8 py-3 text-sm font-bold uppercase hover:bg-primary transition-colors duration-300"
         >
           Jelajahi Semua Unit Kamera & Gadget
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }

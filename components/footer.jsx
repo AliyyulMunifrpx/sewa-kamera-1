@@ -5,11 +5,11 @@ import { store } from "../data/store.js";
 export default function Footer() {
   const navLinks = [
     { name: "Beranda", url: "/" },
-    { name: "Katalog", url: "/katalog-sewa-kamera-semarang" },
-    { name: "Kontak", url: "/kontak-sewa-kamera-semarang" },
+    { name: "Katalog", url: "/katalog-sewa-kamera-surabaya" },
+    { name: "Kontak", url: "/kontak-sewa-kamera-surabaya" },
     {
       name: "S&K",
-      url: "/syarat-dan-ketentuan-sewa-kamera-semarang",
+      url: "/syarat-dan-ketentuan",
     },
   ];
 
@@ -21,9 +21,9 @@ export default function Footer() {
         <div className="flex flex-col gap-4 max-w-md">
           <Image
             alt={`Logo ${store?.name || "Rental Kamera"}`}
-            src="/assets/logo.webp"
-            width={50}
-            height={50}
+            src="/assets/kj-logo.webp"
+            width={70}
+            height={70}
             className="brightness-0 invert"
           />
           <div>

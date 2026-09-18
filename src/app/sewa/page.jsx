@@ -3,7 +3,29 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { products } from "../../../data/product.js";
+
+const revealUp = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+const revealLeft = {
+  initial: { x: -24, scale: 0.98 },
+  whileInView: { x: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+const revealRight = {
+  initial: { x: 24, scale: 0.98 },
+  whileInView: { x: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
 
 function FormSewaContent() {
   const searchParams = useSearchParams();
@@ -100,18 +122,21 @@ function FormSewaContent() {
 
   return (
     <main className="bg-white text-black min-h-dvh py-12 px-4 lg:pl-40 w-full flex flex-col gap-4">
-      <div>
+      <motion.div {...revealUp}>
         <span className="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">
           Formulir Pemesanan
         </span>
         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-black">
           Detail Sewa Unit
         </h1>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Kolom Kiri: Form Data Diri */}
-        <div className="lg:col-span-2 border border-black p-4 md:p-4 flex flex-col gap-4">
+        <motion.div
+          {...revealLeft}
+          className="lg:col-span-2 border border-black p-4 md:p-4 flex flex-col gap-4"
+        >
           <h2 className="text-2xl font-bold uppercase border-b border-black pb-4">
             Data Penyewa
           </h2>
@@ -180,10 +205,10 @@ function FormSewaContent() {
               />
             </div>
           </form>
-        </div>
+        </motion.div>
 
         {/* Kolom Kanan: Keranjang Unit & Total */}
-        <div className="flex flex-col gap-4">
+        <motion.div {...revealRight} className="flex flex-col gap-4">
           <div className="border border-black p-4 flex flex-col gap-4">
             <h2 className="text-xl font-bold uppercase border-b border-black pb-4">
               Keranjang Unit
@@ -196,9 +221,11 @@ function FormSewaContent() {
                   Belum ada unit dipilih.
                 </p>
               ) : (
-                getSelectedUnitsData().map((unit) => (
-                  <div
+                getSelectedUnitsData().map((unit, index) => (
+                  <motion.div
                     key={unit.id}
+                    {...revealUp}
+                    transition={{ ...revealUp.transition, delay: index * 0.08 }}
                     className="flex justify-between items-center p-4 border border-black"
                   >
                     <Image
@@ -223,7 +250,7 @@ function FormSewaContent() {
                     >
                       &times;
                     </button>
-                  </div>
+                  </motion.div>
                 ))
               )}
             </div>
@@ -286,7 +313,7 @@ function FormSewaContent() {
               Lanjutkan ke WhatsApp
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </main>
   );

@@ -1,3 +1,14 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const reveal = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
 export default function TestimonialSection() {
   const testimonials = [
     {
@@ -26,20 +37,22 @@ export default function TestimonialSection() {
   return (
     <section className="bg-white text-black py-12 px-4 lg:pl-40 w-full">
       {/* Header Section */}
-      <div className="mb-8">
+      <motion.div {...reveal} className="mb-8">
         <span className="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">
           Testimoni Pelanggan
         </span>
         <h2 className="text-4xl font-bold uppercase tracking-tight text-black">
           Apa Kata Mereka?
         </h2>
-      </div>
+      </motion.div>
 
       {/* Grid Testimonial */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {testimonials.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            {...reveal}
+            transition={{ ...reveal.transition, delay: index * 0.1 }}
             className="bg-white border border-black flex flex-col justify-between group hover:border-primary transition-colors duration-300"
           >
             <div className="p-4">
@@ -63,7 +76,7 @@ export default function TestimonialSection() {
                 {item.role}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

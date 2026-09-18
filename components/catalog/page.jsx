@@ -3,8 +3,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { products } from "../../data/product.js";
 import CTASection from "../home/cta-section.jsx";
+
+const reveal = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
 
 export default function CatalogPage() {
   const [activeCategory, setActiveCategory] = useState("Semua");
@@ -34,7 +42,7 @@ export default function CatalogPage() {
     <>
       <main className="bg-white text-black min-h-dvh py-12 px-4 lg:pl-40 w-full">
         {/* Header Halaman */}
-        <div className="flex flex-col gap-4 mb-10">
+        <motion.div {...reveal} className="flex flex-col gap-4 mb-10">
           <div>
             <span className="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">
               Katalog Lengkap
@@ -77,7 +85,7 @@ export default function CatalogPage() {
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Grid Produk */}
         {filteredProducts.length > 0 ? (
@@ -86,8 +94,13 @@ export default function CatalogPage() {
               const imageSrc = getImagePath(item);
 
               return (
-                <div
+                <motion.div
                   key={item.id || index}
+                  {...reveal}
+                  transition={{
+                    ...reveal.transition,
+                    delay: (index % 4) * 0.08,
+                  }}
                   className="bg-white border border-black flex flex-col justify-between p-4 relative group hover:border-primary transition-colors duration-300"
                 >
                   {/* Badge */}
@@ -120,19 +133,22 @@ export default function CatalogPage() {
                     </p>
 
                     <Link
-                      href={`/sewa-kamera-semarang/${item.slug}`}
+                      href={`/sewa-kamera-surabaya/${item.slug}`}
                       className="mt-4 w-full bg-primary text-white text-center py-2 font-medium hover:bg-black transition-colors duration-300"
                     >
                       Lihat detail
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         ) : (
           /* Empty State */
-          <div className="border border-black p-12 text-center flex flex-col items-center justify-center gap-4 my-8">
+          <motion.div
+            {...reveal}
+            className="border border-black p-12 text-center flex flex-col items-center justify-center gap-4 my-8"
+          >
             <p className="text-lg font-bold uppercase text-black/60">
               Unit yang kamu cari tidak ditemukan.
             </p>
@@ -145,7 +161,7 @@ export default function CatalogPage() {
             >
               Reset Filter
             </button>
-          </div>
+          </motion.div>
         )}
       </main>
       <CTASection></CTASection>{" "}

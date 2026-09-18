@@ -1,14 +1,35 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { store } from "../../../data/store.js";
 import CTASection from "../../../components/home/cta-section.jsx";
+
+const revealUp = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+const revealLeft = {
+  initial: { x: -24, scale: 0.98 },
+  whileInView: { x: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+const revealRight = {
+  initial: { x: 24, scale: 0.98 },
+  whileInView: { x: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     whatsapp: "",
-
     message: "",
   });
 
@@ -19,14 +40,11 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const waNumber = (
-      store?.whatsapp ||
-      store?.phone ||
-      "+6281234567890"
-    ).replace(/[^0-9]/g, "");
+    // Membersihkan format nomor jika ada karakter non-angka
+    const waNumber = (store?.whatsapp || "").replace(/[^0-9]/g, "");
 
     const text =
-      `Halo *${store?.name || "Abon Rental Kamera"}*,\n\n` +
+      `Halo *${store?.name}*,\n\n` +
       `Saya mau bertanya:\n` +
       `- *Nama:* ${formData.name}\n` +
       `- *No. WA:* ${formData.whatsapp}\n` +
@@ -36,34 +54,11 @@ export default function ContactPage() {
     window.open(waUrl, "_blank");
   };
 
-  const contactInfo = [
-    {
-      title: "Alamat Toko",
-      value: store?.address || "Jl. Pemuda No. 123, Sekayu, Semarang Tengah",
-      detail: store?.city || "Kota Semarang",
-    },
-    {
-      title: "Jam Operasional",
-      value: store?.day,
-      detail: store?.hours,
-    },
-    {
-      title: "Customer Support",
-      value: store?.whatsapp || "+62 812-3456-7890",
-      detail: "Respon Cepat via WhatsApp",
-    },
-    {
-      title: "Email & Socials",
-      value: store?.email || "info@abonrental.com",
-      detail: store?.instagram || "@abonrentalkamera",
-    },
-  ];
-
   return (
     <>
       <main className="bg-white text-black min-h-dvh py-12 px-4 lg:pl-40 w-full">
         {/* Header Halaman */}
-        <div className="flex flex-col gap-4 mb-10">
+        <motion.div {...revealUp} className="flex flex-col gap-4 mb-10">
           <span className="text-primary font-bold text-sm uppercase tracking-wider block">
             Hubungi Kami
           </span>
@@ -75,34 +70,12 @@ export default function ContactPage() {
             booking secara langsung? Datang ke toko atau hubungi kami via
             WhatsApp.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Grid Informasi Kontak */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {contactInfo.map((info, index) => (
-            <div
-              key={index}
-              className="border border-black p-4 bg-primary flex flex-col justify-between gap-4"
-            >
-              <span className="text-xs font-bold uppercase text-white tracking-wider">
-                {info.title}
-              </span>
-              <div>
-                <h2 className="text-lg font-bold uppercase text-white">
-                  {info.value}
-                </h2>
-                <p className="text-xs font-normal text-white/70 mt-1">
-                  {info.detail}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Main Content Grid: Form & Maps */}
+        {/* Main Content Grid: Form & Informasi Kontak */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 border border-black p-4 md:p-4 bg-white">
-          {/* Form Kontak / Booking Fast Inquiry */}
-          <div className="flex flex-col gap-4">
+          {/* Bagian Kiri: Form Kontak / Booking Fast Inquiry */}
+          <motion.div {...revealLeft} className="flex flex-col gap-4">
             <div>
               <span className="text-primary font-bold text-xs uppercase tracking-wider block mb-1">
                 Pesan Instan
@@ -164,35 +137,93 @@ export default function ContactPage() {
                 Kirim via WhatsApp
               </button>
             </form>
-          </div>
+          </motion.div>
 
-          {/* Embedded Map & Syarat Singkat */}
-          <div className="flex flex-col justify-between gap-4 border-t lg:border-t-0 lg:border-l border-black pt-4 lg:pt-0 lg:pl-4">
-            <div className="flex flex-col gap-4">
-              <span className="text-primary font-bold text-xs uppercase tracking-wider block">
-                Petunjuk Arah
+          {/* Bagian Kanan: Informasi Kontak Lengkap */}
+          <motion.div
+            {...revealRight}
+            className="flex flex-col gap-6 border-t lg:border-t-0 lg:border-l border-black pt-6 lg:pt-0 lg:pl-6"
+          >
+            <div>
+              <span className="text-primary font-bold text-xs uppercase tracking-wider block mb-1">
+                Informasi Kontak
               </span>
               <h2 className="text-2xl font-bold uppercase text-black">
-                Peta Lokasi Toko
+                Detail Toko
               </h2>
-              {/* Google Maps Embed Container */}
-              <div className="w-full h-44 md:h-40 border border-black relative bg-black/5 overflow-hidden">
-                <iframe
-                  title="Google Maps Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.300729352125!2d110.4184!3d-4.9829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4ec0000001%3A0x1!2sSemarang!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+            </div>
+
+            <div className="flex flex-col gap-5">
+              {/* Alamat */}
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-bold uppercase text-black/50">
+                  Alamat Toko
+                </span>
+                <p className="text-sm font-bold uppercase text-black leading-relaxed">
+                  {store?.address}
+                </p>
+              </div>
+
+              {/* Jam Operasional */}
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-bold uppercase text-black/50">
+                  Jam Operasional
+                </span>
+                <p className="text-sm font-bold uppercase text-black">
+                  {store?.day} • {store?.hours}
+                </p>
+              </div>
+
+              {/* WhatsApp */}
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-bold uppercase text-black/50">
+                  WhatsApp
+                </span>
+
+                <a
+                  href={`https://wa.me/${store?.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold uppercase text-primary hover:text-black hover:underline transition-colors w-fit"
+                >
+                  +{store?.whatsapp}
+                </a>
+              </div>
+
+              {/* Instagram */}
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-bold uppercase text-black/50">
+                  Instagram
+                </span>
+
+                <a
+                  href={`https://instagram.com/${store?.instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold uppercase text-primary hover:text-black hover:underline transition-colors w-fit"
+                >
+                  @{store?.instagram}
+                </a>
+              </div>
+
+              {/* Email */}
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-bold uppercase text-black/50">
+                  Email
+                </span>
+
+                <a
+                  href={`mailto:${store?.email}`}
+                  className="text-sm font-bold uppercase text-primary hover:text-black hover:underline transition-colors w-fit"
+                >
+                  {store?.email}
+                </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </main>
-      <CTASection></CTASection>
+      <CTASection />
     </>
   );
 }

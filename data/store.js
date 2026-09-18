@@ -1,12 +1,13 @@
 export const store = {
-  name: "Abon Rental Kamera",
-  city: "Semarang",
-  map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.1774072874546!2d110.40042417499713!3d-6.988373293012596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4785712c87%3A0x59a2c5ebbc30b963!2sAbon%20Sewa%20Kamera%20Semarang%20(Lucky%20Space%20Semarang)!5e0!3m2!1sen!2sid!4v1789380692782!5m2!1sen!2sid",
-  instagram: "abonkamerasemarang",
+  name: "KJ Multimedia",
+  city: "Surabaya",
+  map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6822030408057!2d112.75228027499986!3d-7.276955292730186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbce24d24287%3A0x53463e2ce30779ba!2sKJ%20Multimedia%20%7C%20Rental%20Kamera%20Surabaya!5e0!3m2!1sen!2sid!4v1789661051450!5m2!1sen!2sid",
+  instagram: "kj.multimedia",
   whatsapp: "6282329475745",
-  websiteUrl: "https://abon-kamera-demo.vercel.app",
-  address: "Jl. Pemuda No. 123, Sekayu, Semarang Tengah",
+  websiteUrl: "https://kj-multimedia.vercel.app",
+  address:
+    "Jl. Gubeng Kertajaya VII Raya No.26, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60286",
   day: "Sabtu - Minggu",
   hours: "08.00 - 22.00 WIB",
-  email: "info@abonrental.com",
+  email: "info@kjmultimedia.com",
 };

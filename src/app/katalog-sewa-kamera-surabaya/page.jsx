@@ -13,7 +13,7 @@ export const metadata = {
     store?.name || "Rental Kamera",
   ],
   alternates: {
-    canonical: "/katalog-sewa-kamera-semarang",
+    canonical: "/katalog-sewa-kamera-surabaya",
   },
   openGraph: {
     title: `Katalog Sewa Kamera & Gear | ${store?.name || "Rental Kamera"} ${store?.city || "Semarang"}`,

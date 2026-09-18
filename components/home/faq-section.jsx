@@ -1,6 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
+
+const reveal = {
+  initial: { y: 24, scale: 0.98 },
+  whileInView: { y: 0, scale: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -40,22 +48,24 @@ export default function FAQSection() {
   return (
     <section className="bg-white text-black py-12 px-4 lg:pl-40 w-full">
       {/* Header Section */}
-      <div className="mb-8">
+      <motion.div {...reveal} className="mb-8">
         <span className="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">
           Pertanyaan Umum
         </span>
         <h2 className="text-4xl font-bold uppercase tracking-tight text-black">
           Frequently Asked Questions
         </h2>
-      </div>
+      </motion.div>
 
       {/* Accordion FAQ List */}
       <div className="flex flex-col gap-4 ">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
           return (
-            <div
+            <motion.div
               key={index}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: index * 0.08 }}
               className="border border-black bg-white transition-colors duration-300"
             >
               {/* Question Toggle Button */}
@@ -79,7 +89,7 @@ export default function FAQSection() {
                   </p>
                 </div>
               )}
-            </div>
+            </motion.div>
           );
         })}
       </div>
